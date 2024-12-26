@@ -1,0 +1,73 @@
+# python -m venv venv
+# venv\Scripts\activate
+
+fastapi
+uvicorn
+sqlalchemy
+pymysql
+
+passlib
+bcrypt==4.0.1
+python-multipart
+python-jose[cryptograph
+
+#for Email validator
+pip install pydantic[email]
+
+
+#Passlib
+# --------
+# Passlib is a password hashing library for Python that supports various hashing algorithms.
+# It simplifies the process of securely hashing and verifying passwords.
+# Features include:
+# - Built-in support for popular hash algorithms like bcrypt, pbkdf2, argon2, etc.
+# - Easy-to-use API for hashing and verifying passwords.
+# - Automatically manages algorithm upgrades to ensure the latest security standards.
+# Example Usage:
+# from passlib.context import CryptContext
+# pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+# hashed = pwd_context.hash("your_password")
+# pwd_context.verify("your_password", hashed)
+
+# bcrypt==4.0.1
+# --------------
+# Bcrypt is a library for hashing passwords using the bcrypt hashing algorithm.
+# It's designed to make brute-force attacks computationally expensive.
+# Features:
+# - Salt is automatically generated for each password hash.
+# - Slows down repeated password guesses to make attacks infeasible.
+# - Recommended for password storage due to its strong resistance to attacks.
+# Example Usage:
+# import bcrypt
+# hashed = bcrypt.hashpw("your_password".encode('utf-8'), bcrypt.gensalt())
+# bcrypt.checkpw("your_password".encode('utf-8'), hashed)
+
+# python-multipart
+# -----------------
+# Python-multipart is a library for handling multipart form data in Python applications.
+# It's commonly used in web frameworks like FastAPI for handling file uploads or form submissions.
+# Features:
+# - Parses multipart form data in HTTP requests.
+# - Handles both text and file fields in forms.
+# Example Usage:
+# from fastapi import FastAPI, File, Form, UploadFile
+# app = FastAPI()
+# @app.post("/upload/")
+# async def upload_file(file: UploadFile = File(...), text_field: str = Form(...)):
+#     return {"file_name": file.filename, "text_field": text_field}
+
+# python-jose[cryptography]
+# --------------------------
+# Python-JOSE is a library for handling JSON Object Signing and Encryption (JOSE) standards.
+# It supports JSON Web Tokens (JWT), JSON Web Signatures (JWS), and JSON Web Encryption (JWE).
+# Adding the "cryptography" extra enables the use of the cryptography library for secure operations.
+# Features:
+# - Sign and verify JWT tokens.
+# - Encrypt and decrypt payloads.
+# - Supports multiple cryptographic algorithms.
+# Example Usage:
+# from jose import jwt
+# secret = "your_secret_key"
+# payload = {"some": "data"}
+# token = jwt.encode(payload, secret, algorithm="HS256")
+# decoded = jwt.decode(token, secret, algorithms=["HS256"])
